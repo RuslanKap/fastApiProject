@@ -1,0 +1,24 @@
+<table class="table table-striped "  id="search_table">
+    <thead>
+    <tr>
+        <th>Text</th>
+        <th>Date</th>
+        <th>Rubrics</th>
+    </tr>
+    </thead>
+    <tbody>
+   {% if posts %}
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.text }}</td>
+            <td>{{ post.created_date }} </td>
+            <td>{{ post.rubrics }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3" >{{message}}</td>
+        </tr>
+  {% endif %}
+    </tbody>
+</table>
