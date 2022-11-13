@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from fastapi import FastAPI, Depends, Request
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -9,6 +11,8 @@ from .db import async_session
 from .models import Posts
 from .service import get_post_by_text
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Dependency
 async def get_db() -> AsyncSession:
@@ -17,8 +21,8 @@ async def get_db() -> AsyncSession:
 
 
 app = FastAPI()
-templates = Jinja2Templates(directory="app/templates/")
-app.mount("/static", StaticFiles(directory="app/templates/"), name="static")
+templates = Jinja2Templates(directory=Path(BASE_DIR, "app/templates/"))
+app.mount("/static", StaticFiles(directory=Path(BASE_DIR, "app/templates/")), name="static")
 
 
 @app.get('/')
