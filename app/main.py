@@ -3,7 +3,6 @@ from pathlib import Path
 from fastapi import FastAPI, Depends, Request
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
